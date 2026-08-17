@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+    <form method="POST" action="/login">
+        <h2>Login</h2>
+        {% if message %}
+    <p>{{ message }}</p>
+        {% endif %}
+        <input type="text" name="username" placeholder="Enter Username" required>
+        <input type="password" name="password" placeholder="Enter your Password" required><p><a href="/forgot">Forgot Password</a></p>
+        <button>LOGIN</button>
+        <p>Don't have account? <a href="/signup">Sign-up</a></p>
+    </form>
+</body>
+</html>

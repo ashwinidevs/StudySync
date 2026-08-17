@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    
+    <div class="app">
+        <div class="menu-toggle">
+        <div class="ham">
+            <span></span>
+        </div>
+    </div>
+        <aside class="sidebar">
+            
+            <h3>StudySync</h3>
+            <nav class="menu">
+                <a href="{{ url_for('dashboard') }}" class="menu-items">Dashboard</a>
+                <a href="{{ url_for('subject') }}" class="menu-items">Subjects</a>
+                <a href="{{ url_for('today_plan') }}" class="menu-items">Today's Plan</a>
+                <a href="{{ url_for('progress') }}" class="menu-items">Progress</a>
+                <a href="{{ url_for('analytics') }}" class="menu-items">Analytics</a>
+                <a href="{{ url_for('add_sub') }}" class="menu-items">Add Subject</a>
+                <a href="{{ url_for('edit_sub') }}" class="menu-items">Edit</a>
+                <a href="{{ url_for('setting') }}" class="menu-items">Settings</a>
+
+            </nav>
+            <p>"Small Progress Every Day Loads Big Result"</p>
+        </aside>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}""></script>
+</body>
+</html>

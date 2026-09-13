@@ -1,6 +1,5 @@
 from flask import *
 from db import *
-from werkzeug.security import generate_password_hash,check_password_hash
 import model
 from functools import wraps
 app=Flask(__name__)
@@ -77,10 +76,36 @@ def base():
 def dashboard():
     return render_template("dashboard.html")
 
-@app.route("/subject")
+@app.route("/add_sub", methods=["GET", "POST"])
 @login_required
-def subject():
-    return render_template("subject.html")
+def add_sub():
+    db = sessionLocal()
+
+    if request.method == "POST":
+        sub_name = request.form.get("subjectnm")
+        exam_date = request.form.get("exam_date")
+        difficulty_lvl = request.form.get("difficulty")
+
+        if sub_name and exam_date and difficulty_lvl:
+            try:
+                sub = model.Subject(
+                    subject_name=sub_name,
+                    exam_date=exam_date,
+                    difficulty_lvl=difficulty_lvl
+                )
+
+                db.add(sub)
+                db.commit()
+
+                flash("Subject added successfully!")
+                return redirect("/add_sub")
+
+            except IntegrityError:
+                db.rollback()
+                flash("Subject already exists!")
+                return redirect("/add_sub")
+
+    return render_template("subject.html") 
 
 @app.route("/today_plan")
 @login_required
@@ -97,10 +122,7 @@ def progress():
 def analytics():
     return render_template("analytics.html")
 
-@app.route("/add_sub")
-@login_required
-def add_sub():
-    return render_template("add_sub.html")
+
 
 @app.route("/edit_sub")
 @login_required
@@ -113,7 +135,5 @@ def setting():
     return render_template("setting.html")
 
     
-
-
 if __name__ == "__main__":
     app.run(debug=True)

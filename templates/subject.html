@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Subject</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='subject.css') }}"
+    />
+  </head>
+
+  <body>
+    <main>
+      <div class="top">
+        <span>YOUR STUDY SPACE</span>
+        <h1>Build your study plan</h1>
+        <p>Add your subjects and let StudySync handle the planning.</p>
+      </div>
+      <form method="post">
+        <div class="subject-box">
+          <input
+            type="text"
+            id="subject"
+            name="subjectnm"
+            placeholder="Subject name"
+          />
+
+          <input type="date" name="exam_date" id="exam_date" />
+
+          <select id="difficulty" name="difficulty">
+            <option value="">How difficult is it?</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+
+          <button>ADD SUBJECT →</button>
+        </div>
+      </form>
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <div class="flash-message">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %}
+    </main>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #f7f6ff;
+  display: grid;
+  place-items: center;
+}
+
+main {
+  width: 650px;
+  animation: show 0.7s ease;
+}
+
+.top span {
+  color: #7567e8;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.top h1 {
+  font-size: 42px;
+  margin: 10px 0;
+}
+
+.top p {
+  color: #888;
+  margin-bottom: 35px;
+}
+
+.subject-box {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr auto;
+  gap: 10px;
+  background: white;
+  padding: 12px;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px #0001;
+}
+
+input,
+select {
+  border: 0;
+  outline: 0;
+  padding: 15px;
+  background: #f5f4fa;
+  border-radius: 12px;
+}
+
+button {
+  border: 0;
+  padding: 0 20px;
+  border-radius: 12px;
+  background: #6c5ce7;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: translateX(4px);
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flash-message {
+  margin-top: 15px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: #6c5ce7;
+  color: #000000;
+  text-align: center;
+  font-size: 16px;
+}

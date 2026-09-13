@@ -10,11 +10,8 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.today())
 
 class Subject(Base):
-    __tablename__="subjects"
+    __tablename__="sub"
     id=Column(Integer,primary_key=True)
     subject_name=Column(String(100),unique=True)
     exam_date=Column(Date)
-    difficulty=Column(String(100))
-    estimated_hours=Column(Integer)
-    syllabus_topics=Column(Text)
-    created_at=Column(DateTime, default=datetime.today)
+    difficulty_lvl=Column(String(10))
